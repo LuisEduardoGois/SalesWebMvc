@@ -1,6 +1,8 @@
 ﻿using System;
-using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using SalesWebMvc.Services;
 
 namespace SalesWebMvc.Controllers
@@ -18,6 +20,7 @@ namespace SalesWebMvc.Controllers
         {
             return View();
         }
+
         public async Task<IActionResult> SimpleSearch(DateTime? minDate, DateTime? maxDate)
         {
             if (!minDate.HasValue)
@@ -33,6 +36,7 @@ namespace SalesWebMvc.Controllers
             var result = await _salesRecordService.FindByDateAsync(minDate, maxDate);
             return View(result);
         }
+
         public async Task<IActionResult> GroupingSearch(DateTime? minDate, DateTime? maxDate)
         {
             if (!minDate.HasValue)
@@ -50,3 +54,4 @@ namespace SalesWebMvc.Controllers
         }
     }
 }
+
